@@ -1,6 +1,6 @@
 //线下
 const UPLOAD_PATH = './upload'
-const UPLOAD_URL = 'http://localhost:80/'
+const UPLOAD_URL = 'http://localhost:80'
 
 //线上
 /* const UPLOAD_PATH ='/home/lighthouse/nginx/upload'
