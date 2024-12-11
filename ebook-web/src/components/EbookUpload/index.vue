@@ -45,8 +45,8 @@ export default {
   },
   data() {
     return {
-     /*  action: 'http://localhost:5000/book/upload' */
-      action: 'http://119.29.190.23:5000/book/upload'
+     action: 'http://localhost:5001/book/upload'
+      /*action: 'http://119.29.190.23:5000/book/upload'*/
     }
   },
   computed: {

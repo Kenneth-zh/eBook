@@ -1,10 +1,10 @@
 //线下
-const UPLOAD_PATH = 'D:/nginx-1.18.0/upload'
+const UPLOAD_PATH = './upload'
 const UPLOAD_URL = 'http://localhost:80/'
 
 //线上
 /* const UPLOAD_PATH ='/home/lighthouse/nginx/upload'
-const UPLOAD_URL ='http://119.29.190.23:80/'*/
+const UPLOAD_URL ='http://119.29.190.23:80/' */
 
 //常量参数
 module.exports = {
