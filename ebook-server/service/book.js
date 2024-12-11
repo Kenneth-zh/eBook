@@ -44,7 +44,7 @@ async function insertContents(book) {
             const content = contents[i]
             const _content = _.pick(content, [
                 'fileName',
-                'id',
+                //'id',
                 'href',
                 'order',
                 'level',
@@ -53,7 +53,6 @@ async function insertContents(book) {
                 'pid',
                 'navId'
             ])
-            _content.id = parseInt(_content.id, 10) // 确保 id 是整数
             await db.insert(_content, 'contents')
         }
     }
