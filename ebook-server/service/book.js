@@ -53,6 +53,7 @@ async function insertContents(book) {
                 'pid',
                 'navId'
             ])
+            _content.id = parseInt(_content.id, 10) // 确保 id 是整数
             await db.insert(_content, 'contents')
         }
     }
