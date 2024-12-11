@@ -13,6 +13,7 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use('/', router)
+//app.use('/upload', express.static(path.join(__dirname, 'upload')))
 
 
 // 使 express 监听 5000 端口号发起的 http 请求
