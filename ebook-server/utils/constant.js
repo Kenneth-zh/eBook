@@ -1,6 +1,7 @@
 //线下
 const UPLOAD_PATH = './upload'
-const UPLOAD_URL = 'http://localhost:80'
+const UPLOAD_URL = 'http://localhost:5001/upload'
+//const UPLOAD_URL = '/Users/kennethzhang/Projects/se1/ebook-item/ebook-server/upload'
 
 //线上
 /* const UPLOAD_PATH ='/home/lighthouse/nginx/upload'
