@@ -389,15 +389,20 @@ export default {
         });
       });
     },
-    handleDownload(row) {
-      this.downloadLoading = true;
+        handleDownload(row) {
+      const url = row.url; // 使用后端回传的 unzipUrl 参数
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = row.fileName; // 设置下载文件名
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
       this.$notify({
         title: "成功",
         message: "开始下载",
         type: "success",
         duration: 2000,
       });
-      this.downloadLoading = false;
     },
     getSortClass: function (key) {
       const sort = this.listQuery.sort;

@@ -57,4 +57,4 @@ export function bookHome() {
       url: '/book/home',
       method: 'get'
     })
-  }
+}
