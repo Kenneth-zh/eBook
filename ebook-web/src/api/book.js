@@ -50,11 +50,3 @@ export function getCategory() {
     method: 'get'
   })
 }
-
-
-export function bookHome() {
-    return service({
-      url: '/book/home',
-      method: 'get'
-    })
-}

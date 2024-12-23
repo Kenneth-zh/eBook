@@ -21,20 +21,6 @@
         @clear="handleFilter"
         @blur="handleFilter"
       />
-      <el-select
-        v-model="listQuery.category"
-        placeholder="分类"
-        clearable
-        class="filter-item"
-        @change="handleFilter"
-      >
-        <el-option
-          v-for="item in categoryList"
-          :key="item.value"
-          :label="item.label"
-          :value="item.label"
-        />
-      </el-select>
       <el-button
         v-waves
         class="filter-item"
@@ -192,15 +178,6 @@
         fixed="right"
       >
         <template slot-scope="{ row }">
-          <PreviewDialog
-            title="电子书信息"
-            :data="row"
-          >
-            <el-button
-              type="text"
-              icon="el-icon-view"
-            />
-          </PreviewDialog>
           <el-button
             type="text"
             icon="el-icon-edit"
@@ -389,9 +366,9 @@ export default {
         });
       });
     },
-        handleDownload(row) {
+    handleDownload(row) {
       const url = row.url; // 使用后端回传的 unzipUrl 参数
-      const link = document.createElement('a');
+      const link = document.createElement("a");
       link.href = url;
       link.download = row.fileName; // 设置下载文件名
       document.body.appendChild(link);
