@@ -138,13 +138,14 @@ router.get('/list', function (req, res, next) {
     })
 })
 
+/*
 router.get('/category', function (req, res, next) {
   bookService.getCategory().then(category => {
     new Result(category).success(res)
   }).catch(err => {
     next(boom.badImplementation(err))
   })
-})
+})*/
 
 router.get('/home', function(req, res, next) {
   bookService.home().then(result => {

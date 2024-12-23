@@ -92,12 +92,6 @@
         align="center"
       />
       <el-table-column
-        label="分类"
-        prop="categoryText"
-        width="100"
-        align="center"
-      />
-      <el-table-column
         label="语言"
         prop="language"
         align="center"

@@ -221,6 +221,7 @@ async function listBook(p) {
     }
 }
 
+/*
 async function getCategory() {
     const sql = 'select * from category order by category asc'
     const result = await db.querySql(sql)
@@ -233,7 +234,7 @@ async function getCategory() {
         })
     })
     return categoryList
-}
+}*/
 
 function home() {
     const userSql = 'select count(*) as count from user'
