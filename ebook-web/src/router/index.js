@@ -44,7 +44,7 @@ export const constantRoutes = [{
     redirect: '/book',
     children: [{
         path: 'book',
-        component: () => import('@/views/book/show'),
+        component: () => import('@/views/book/list'),
         name: 'book',
         meta: {
             title: '图书总览',
@@ -54,8 +54,8 @@ export const constantRoutes = [{
     }]
 },
 
-
 ]
+
 
 export const asyncRoutes = [{
     path: '/book',
@@ -76,7 +76,7 @@ export const asyncRoutes = [{
             icon: 'edit',
             //roles: ['admin']
         }
-    },
+    },/*
     {
         name: 'bookEdit',
         path: '/book/edit/:fileName',
@@ -99,17 +99,9 @@ export const asyncRoutes = [{
             icon: 'list',
             //roles: ['editor']
         }
-    }
-
-
+    }*/
     ]
-},
-
-    /* {
-      path: '*',
-      redirect: '/404',
-      hidden: true
-    } */
+}
 ]
 
 const createRouter = () => new Router({

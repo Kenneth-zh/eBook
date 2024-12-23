@@ -327,7 +327,7 @@ export default {
       this.showCover = value;
     },
     getCategoryList() {
-      console.log("商品目录");
+      console.log("getCategoryList");
       /* getCategory().then(response => {
           this.categoryList = response.data
         }) */
