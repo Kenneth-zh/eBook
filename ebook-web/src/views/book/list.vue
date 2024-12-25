@@ -34,7 +34,6 @@
         :label="item.label"
         :value="item.label"
       />
-      </el-select>
       <el-button
         v-waves
         class="filter-item"
