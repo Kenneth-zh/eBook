@@ -13,7 +13,7 @@ module.exports = {
     CODE_ERROR: -1,//错误码
     CODE_SUCCESS: 0,//成功
     PRIVATE_KEY: 'admin_imooc_node_test_youbaobao_xyz',//私钥
-    JWT_EXPIRED: 60 * 60, //token过期时间
+    JWT_EXPIRED: 1200 * 60, //token过期时间
     CODE_TOKEN_EXPIRED: -2,//token失效码
     debug: true,
     UPLOAD_PATH,//上传路径

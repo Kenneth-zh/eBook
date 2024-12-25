@@ -362,6 +362,14 @@ class Book {
             }
         }
     }
+
+    static genBookUrl(book) {
+        if (Number(book.updateType) === 0) {
+            return `${OLD_UPLOAD_URL}${book.filePath}`
+        } else {
+            return `${UPLOAD_URL}${book.filePath}`
+        }
+    }
 }
 
 module.exports = Book

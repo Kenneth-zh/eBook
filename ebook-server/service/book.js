@@ -261,7 +261,6 @@ module.exports = {
     getBook,
     listBook,
     clear,
-    getCategory,
     updateBook,
     deleteBook,
     home

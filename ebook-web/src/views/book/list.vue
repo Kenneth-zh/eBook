@@ -21,6 +21,20 @@
         @clear="handleFilter"
         @blur="handleFilter"
       />
+      <!-- <el-select
+      v-model="listQuery.category"
+      placeholder="分类"
+      clearable
+      class="filter-item"
+      @change="handleFilter"
+    > -->
+      <el-option
+        v-for="item in categoryList"
+        :key="item.value"
+        :label="item.label"
+        :value="item.label"
+      />
+      </el-select>
       <el-button
         v-waves
         class="filter-item"
@@ -298,7 +312,7 @@ export default {
       this.showCover = value;
     },
     getCategoryList() {
-      console.log("getCategoryList");
+      console.log("商品目录");
       /* getCategory().then(response => {
           this.categoryList = response.data
         }) */
@@ -360,11 +374,22 @@ export default {
         });
       });
     },
+    getSortClass: function (key) {
+      const sort = this.listQuery.sort;
+      return sort === `+${key}`
+        ? "ascending"
+        : sort === `-${key}`
+        ? "descending"
+        : "";
+    },
     handleDownload(row) {
-      const url = row.url; // 使用后端回传的 unzipUrl 参数
+      const coverUrl = new URL(row.cover);
+      const baseUrl =
+        coverUrl.origin + coverUrl.pathname.replace(row.coverPath, "");
+      const downloadUrl = baseUrl + row.filePath;
       const link = document.createElement("a");
-      link.href = url;
-      link.download = row.fileName; // 设置下载文件名
+      link.href = downloadUrl;
+      link.download = row.title; // 设置下载文件名
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -374,14 +399,6 @@ export default {
         type: "success",
         duration: 2000,
       });
-    },
-    getSortClass: function (key) {
-      const sort = this.listQuery.sort;
-      return sort === `+${key}`
-        ? "ascending"
-        : sort === `-${key}`
-        ? "descending"
-        : "";
     },
   },
 };
