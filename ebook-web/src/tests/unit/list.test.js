@@ -1,8 +1,5 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils'
-import jest, {
-    describe, it, expect,
-    beforeEach 
-} from 'jest-mock'
+import jest, { describe, it, expect, beforeEach } from 'jest-mock'
 import ElementUI from 'element-ui'
 import List from '@/views/book/list.vue'
 import { deleteBook } from '@/api/book'
@@ -39,7 +36,7 @@ describe('List.vue', () => {
     expect(wrapper.vm.$router.push).toHaveBeenCalledWith('/book/edit/test.pdf')
   })
 
-  it('calls handleDelete and deletes the book', async () => {
+  it('calls handleDelete and deletes the book', async() => {
     const row = { fileName: 'test.pdf' }
     deleteBook.mockResolvedValue({ msg: '删除成功' })
     await wrapper.vm.handleDelete(row)

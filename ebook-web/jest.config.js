@@ -2,8 +2,7 @@ module.exports = {
   moduleFileExtensions: ['js', 'jsx', 'json', 'vue'],
   transform: {
     '^.+\\.vue$': 'vue-jest',
-    '.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$':
-      'jest-transform-stub',
+    '.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
     '^.+\\.jsx?$': 'babel-jest'
   },
   moduleNameMapper: {
@@ -15,8 +14,7 @@ module.exports = {
   ],
   collectCoverageFrom: ['src/utils/**/*.{js,vue}', '!src/utils/auth.js', '!src/utils/request.js', 'src/components/**/*.{js,vue}'],
   coverageDirectory: '<rootDir>/tests/unit/coverage',
-  // 'collectCoverage': true,
-  'coverageReporters': [
+  coverageReporters: [
     'lcov',
     'text-summary'
   ],
