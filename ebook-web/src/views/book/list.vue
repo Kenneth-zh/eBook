@@ -249,7 +249,9 @@ export default {
       total: 0,
       listLoading: true,
       downloadLoading: false,
-      listQuery: {},
+      listQuery: {
+        sort: "-id", // 设置默认排序
+      },
       showCover: true,
       categoryList: [],
     };
@@ -339,8 +341,13 @@ export default {
     },
     sortChange(data) {
       const { prop, order } = data;
-      if (prop === "id") {
-        this.sortByID(order);
+      if (prop) {
+        if (prop === "id") {
+          this.sortByID(order);
+        } else {
+          this.listQuery.sort = order === "ascending" ? `+${prop}` : `-${prop}`;
+          this.handleFilter();
+        }
       }
     },
     sortByID(order) {
