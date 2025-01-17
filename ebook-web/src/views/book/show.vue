@@ -5,7 +5,7 @@
         v-model="listQuery.title"
         clearable
         placeholder="书名"
-        style="width: 200px;"
+        style="width: 200px"
         class="filter-item"
         @keyup.enter.native="handleFilter"
         @clear="handleFilter"
@@ -15,25 +15,25 @@
         v-model="listQuery.author"
         clearable
         placeholder="作者"
-        style="width: 200px;"
+        style="width: 200px"
         class="filter-item"
         @keyup.enter.native="handleFilter"
         @clear="handleFilter"
         @blur="handleFilter"
       />
-      <!-- <el-select
-      v-model="listQuery.category"
-      placeholder="分类"
-      clearable
-      class="filter-item"
-      @change="handleFilter"
-    > -->
-      <el-option
-        v-for="item in categoryList"
-        :key="item.value"
-        :label="item.label"
-        :value="item.label"
-      />
+      <el-select
+        v-model="listQuery.category"
+        placeholder="分类"
+        clearable
+        class="filter-item"
+        @change="handleFilter"
+      >
+        <el-option
+          v-for="item in categoryList"
+          :key="item.value"
+          :label="item.label"
+          :value="item.label"
+        />
       </el-select>
       <el-button
         v-waves
@@ -45,19 +45,10 @@
       >
         查询
       </el-button>
-      <el-button
-        class="filter-item"
-        type="primary"
-        icon="el-icon-edit"
-        style="margin-left: 5px"
-        @click="handleCreate"
-      >
-        新增
-      </el-button>
       <el-checkbox
         v-model="showCover"
         class="filter-item"
-        style="margin-left:5px;"
+        style="margin-left: 5px"
         @change="changeShowCover"
       >
         显示封面
@@ -70,7 +61,7 @@
       border
       fit
       highlight-current-row
-      style="width: 100%;"
+      style="width: 100%"
       @sort-change="sortChange"
     >
       <el-table-column
@@ -81,129 +72,37 @@
         width="80"
         :class-name="getSortClass('id')"
       />
-      <el-table-column
-        label="书名"
-        width="150"
-        align="center"
-      >
-        <template slot-scope="{ row: { titleWrapper }}">
+      <el-table-column label="书名" width="250" align="center">
+        <template slot-scope="{ row: { titleWrapper } }">
           <span v-html="titleWrapper" />
         </template>
       </el-table-column>
-      <el-table-column
-        label="作者"
-        width="150"
-        align="center"
-      >
-        <template slot-scope="{ row: { authorWrapper }}">
+      <el-table-column label="作者" width="250" align="center">
+        <template slot-scope="{ row: { authorWrapper } }">
           <span v-html="authorWrapper" />
         </template>
       </el-table-column>
       <el-table-column
         label="出版社"
         prop="publisher"
-        width="150"
+        width="250"
         align="center"
       />
-      <el-table-column
-        label="语言"
-        prop="language"
-        align="center"
-      />
+    
       <el-table-column
         v-if="showCover"
         label="封面图片"
-        width="150"
+        width="350"
         align="center"
       >
         <template slot-scope="scope">
-          <a
-            :href="scope.row.cover"
-            target="_blank"
-          >
-            <img
-              :src="scope.row.cover"
-              style="width:120px;height:180px"
-            >
+          <a :href="scope.row.cover" target="_blank">
+            <img :src="scope.row.cover" style="width: 200px; height: 180px" />
           </a>
         </template>
       </el-table-column>
-      <el-table-column
-        label="文件名"
-        prop="fileName"
-        width="100"
-        align="center"
-      />
-      <el-table-column
-        label="文件路径"
-        width="100"
-        align="center"
-      >
-        <template slot-scope="{ row: { filePath }}">
-          <span>{{ filePath | valueFilter }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column
-        label="封面路径"
-        width="100"
-        align="center"
-      >
-        <template slot-scope="{ row: { coverPath }}">
-          <span>{{ coverPath | valueFilter }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column
-        label="解压路径"
-        width="100"
-        align="center"
-      >
-        <template slot-scope="{ row: { unzipPath }}">
-          <span>{{ unzipPath | valueFilter }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column
-        label="上传人"
-        width="100"
-        align="center"
-      >
-        <template slot-scope="scope">
-          <span>{{ scope.row.createUser | valueFilter }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column
-        label="上传时间"
-        width="100"
-        align="center"
-      >
-        <template slot-scope="scope">
-          <span>{{ scope.row.createDt | timeFilter }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column
-        label="操作"
-        align="center"
-        width="120"
-        fixed="right"
-      >
-        <template slot-scope="{ row }">
-          <el-button
-            type="text"
-            icon="el-icon-edit"
-            @click="handleUpdate(row)"
-          />
-          <el-button
-            type="text"
-            icon="el-icon-delete"
-            style="color:#f56c6c"
-            @click="handleDelete(row)"
-          />
-          <el-button
-            type="text"
-            icon="el-icon-download"
-            @click="handleDownload(row)"
-          />
-        </template>
-      </el-table-column>
+      <el-table-column width="150" label="语言" prop="language" align="center" />
+     
     </el-table>
     <pagination
       v-show="total > 0"
@@ -382,25 +281,6 @@ export default {
         ? "descending"
         : "";
     },
-    handleDownload(row) {
-      const coverUrl = new URL(row.cover);
-      const baseUrl =
-        coverUrl.origin + coverUrl.pathname.replace(row.coverPath, "");
-      const downloadUrl = baseUrl + row.filePath;
-      const link = document.createElement("a");
-      link.href = downloadUrl;
-      link.download = row.title; // 设置下载文件名
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      this.$notify({
-        title: "成功",
-        message: "开始下载",
-        type: "success",
-        duration: 2000,
-      });
-    },
   },
 };
 </script>
-
