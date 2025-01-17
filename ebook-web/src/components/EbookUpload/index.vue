@@ -61,9 +61,7 @@ export default {
       this.$emit('beforeUpload', file)
     },
     onSuccess(response) {
-      /* console.log('成功') */
       const { code, msg, data } = response
-      /* console.log(code,msg,data); */
       if (code === 0) {
         this.$message({
           message: msg,

@@ -1,0 +1,35 @@
+@startuml
+
+start
+group "Main"
+
+    :Start a thread for the detect function;
+    :Start a thread for the broadcast function;
+
+
+
+  :Find available camera;
+  :Start video capture;
+  :Create image widget for display;
+
+  while (New camera frame available?) is (Yes)
+    :Preprocess the frame;
+    :Run inference;
+    :Draw bounding boxes on detected objects;
+    :Display the processed frame;
+  endwhile
+  stop
+end group
+
+group "Detect"
+    :initialize voice system;
+    if (Detected something) then (Yes)
+      :Set speech settings;
+      :Announce detection result;
+    else (No)
+      :Continue monitoring;
+    endif
+  stop
+
+end group
+@enduml

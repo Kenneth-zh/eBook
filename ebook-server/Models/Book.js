@@ -316,11 +316,10 @@ class Book {
             fs.unlinkSync(Book.genPath(this.coverPath))
         } //移除封面图片
         if (this.unzipPath && Book.pathExists(this.unzipPath)) {
-            // 注意node低版本将不支持第二个属性
             fs.rmdirSync(Book.genPath(this.unzipPath), {
                 recursive: true
             })
-        } //移除解压目录
+        } 
     }
 
     getContents() {
